@@ -1,0 +1,7 @@
+novoban01.xsb;30;crazy
+novoban02.xsb;47;tim
+novoban03.xsb;42;phoros
+novoban04.xsb;28;crazy
+novoban05.xsb;41;crazy
+novoban06.xsb;666;foo
+novoban07.xbs;99;bar
