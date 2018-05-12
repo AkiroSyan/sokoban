@@ -7,6 +7,7 @@ Date: 19/03/2018
 """
 
 import string
+import os
 
 BLOCS = {
     "mur": '#',
@@ -23,6 +24,7 @@ BLOCS = {
 def init_entrepot():
     """
     Initialisation de l'entrepot.
+
     :return: Liste contenant l'entrepot
     """
     return [['#', '#', '#', '#', '#', '#', '#'],
@@ -35,6 +37,7 @@ def init_entrepot():
 def init_joueur():
     """
     Créer le dictionnaire correspondant à un joueur
+
     :return: le dictionnaire joueur modélisant le joueur et sa partie
     """
     return {"pseudo": "crazy",  # le joueur s'appelle crazy
@@ -50,6 +53,7 @@ def init_joueur():
 def puzzle_xsb(collection, numero):
     """
     Permet d'avoir le nom du fichier puzzle à partir des paramètres entrés. Le numéro doit etre inférieur à 99.
+
     :param collection: Nom de la collection dans laquelle le puzzle est présent
     :param numero: Numéro du puzzle dans la collection
     :return: le nom du fichier .xbs
@@ -63,18 +67,20 @@ def puzzle_xsb(collection, numero):
 def chemin_puzzle(collection, numero):
     """
     Permet d'avoir le chemin d'acces au fichier puzzle dont les caractéristiques sont donnés en paramètre.
+
     :param collection: Nom de la collection dans laquelle le puzzle est présent
     :param numero: Numéro du puzzle dans la collection
     :return: Le chemin d'accès au fichier .xbs si le fichier existe ou None
     """
     if puzzle_xsb(collection, numero) is not None:
-        chemin = "collections" + "/" + str(collection) + "/" + puzzle_xsb(collection, numero)
+        chemin = os.path.join("collections", str(collection), puzzle_xsb(collection, numero))
         return chemin
 
 
 def coords(entrepot):
     """
     Cherche les coordonées du joueur dans l'entrepot
+
     :param entrepot: Li liste contenant le puzzle
     :return: liste de coordonnées du joueur
     """
@@ -95,21 +101,18 @@ def coords(entrepot):
 def coords_deplacees(c, direction):
     """
     Permet d'avoir les nouveaux coordonnées du gardien
+
     :param c: liste avec les coordonnées du gardien
     :param direction: direction du placement du gardien
     :return: liste avec les nouveaux coordonnées du gardien
     """
     if direction == 'haut':
-        #c = [c[0] - 1, c[1]]
         c[0] -= 1
     elif direction == 'bas':
-        #c = [c[0] + 1, c[1]]
         c[0] += 1
     elif direction == 'gauche':
-        #c = [c[0], c[1] - 1]
         c[1] -= 1
     elif direction == 'droite':
-        #c = [c[0], c[1] + 1]
         c[1] += 1
     return c
 

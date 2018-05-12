@@ -6,6 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+.idea/*
+.svn/*
+tests/
+resultats_tests/
+
 # Distribution / packaging
 .Python
 env/

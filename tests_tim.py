@@ -12,13 +12,14 @@ import pickle
 import os
 import puzzle
 import collection
-
+import record
+import platform
+import pygame
+import graphics
 
 # Programme principal
 def main():
-    j = outil.init_joueur()
-    print(terminal.saisie_menu(j))
-
+    pass
 
 if __name__ == '__main__':
     main()

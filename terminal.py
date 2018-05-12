@@ -9,6 +9,7 @@ Date: 19/03/2018
 import colorama
 import outil
 import collection
+import record
 
 ACTIONS = {
     'Z': "haut",
@@ -17,7 +18,8 @@ ACTIONS = {
     'D': "droite",
     'U': "undo",
     'E': "exit",
-    'G': "gagne"
+    'G': "gagne",
+    'R': "reset"
 }
 
 MENU = {
@@ -33,6 +35,7 @@ MENU = {
 def affiche_entrepot(entrepot):
     """
     Affiche sur la console l'entrepôt passé en paramètre
+
     :param entrepot: entrepot à afficher
     :return: None
     """
@@ -45,6 +48,7 @@ def affiche_entrepot(entrepot):
 def affiche_entrepot_couleur(entrepot):
     """
     Affiche en couleur sur la console l'entrepôt passé en paramètre
+
     :param entrepot: entrepot à afficher
     :return: None
     """
@@ -67,6 +71,7 @@ def affiche_entrepot_couleur(entrepot):
 def saisie_action():
     """
     Demande à l'utilisateur la saisie d'une action
+
     :return: L'action choisie par l'utilisateur
     """
     saisie = "X"
@@ -84,6 +89,7 @@ def saisie_action():
 def interprete_action(action):
     """
     Interprète l'action passée en paramètre selon le tableau de correspondance ACTIONS
+
     :param action: caractère à interpréter
     :return: action interprétée
     """
@@ -93,6 +99,7 @@ def interprete_action(action):
 def saisie_pseudo():
     """
     Demmande le pseudo du joueur. Met le pseudo 'crazy' si rien n'est entré
+
     :return: Le pseudo
     """
     pseudo = -1
@@ -104,6 +111,12 @@ def saisie_pseudo():
 
 
 def interprete_menu(saisie):
+    """
+    Interprete la saisie passé en paramètre selon le tableau MENU
+
+    :param saisie: La saisie de l'utilisateur
+    :return: Action à faire
+    """
     if saisie[0] == 'P':
         return MENU['PXX']
     else:
@@ -111,18 +124,31 @@ def interprete_menu(saisie):
 
 
 def saisie_menu(joueur):
+    """
+    Demande l'action que l'utilisateur veut entreprendre
+
+    :param joueur: Profil du joueur
+    :return: La saisie du joueur sur une forme défini
+    """
     saisie = ''
 
+    if joueur["collection"] == "sokoban":
+        autre_coll = "novoban"
+        autre_c = "cn"
+    else:
+        autre_coll = "sokoban"
+        autre_c = "cs"
+
     while not (saisie.upper() in MENU.keys() and saisie != ""):
-        print("\n❓Choisir une option du menu parmi :\n\
+        saisie = input("\n❓Choisir une option du menu parmi :\n\
             1) Lancer le puzzle {} (sS)\n\
-            2) Changer de collection (cs pour sokoban)\n\
+            2) Changer de collection ({} pour {})\n\
             3) Changer de puzzle au sein de novoban (pXX avec XX le numéro du puzzle de 1 au dernier niveau débloqué,"
-              "valant actuellement {} (pP)\n\
-            4) Recherger un puzzle sauvegardé (rR)\n\
-            5) Quitter (eE)\n\ ".format(outil.puzzle_xsb(joueur["collection"], joueur["numero"]), joueur["max"]))
-        saisie = input("> ")
-        if saisie[0] == 'p' and collection.est_dans_collection(joueur["collection"], outil.parse_pXX(saisie)):
+                       "valant actuellement {} (pP)\n\
+            4) Charger un puzzle sauvegardé (rR)\n\
+            5) Quitter (eE)\n\
+            >".format(outil.puzzle_xsb(joueur["collection"], joueur["numero"]), autre_c, autre_coll, joueur["max"]))
+        if saisie[0].upper() == 'P' and collection.est_dans_collection(joueur["collection"], outil.parse_pXX(saisie)):
             if outil.parse_pXX(saisie) > joueur["max"] or outil.parse_pXX(saisie) < 1:
                 saisie = ''
             else:
@@ -131,10 +157,50 @@ def saisie_menu(joueur):
     return saisie.upper()
 
 
-# Programme principal
-def main():
-    pass
+def affiche_stat_partie(joueur):
+    """
+    Permet d'afficher les stat de la partie du joueur et si il y record ou pas
+
+    :param joueur: Dictionnaire contenant le profil du joueur
+    :return: Rien
+    """
+    pseudo = joueur["pseudo"]
+    coll = joueur["collection"]
+    numero = joueur["numero"]
+    score = joueur["score"]
+
+    stat = record.get_stat_partie(pseudo, coll, numero, score)
+    if record.est_record_jeu(coll, numero, score):
+        print(stat, ">> Nouveau record ! <<")
+    elif record.est_meilleur_score_joueur(pseudo, coll, numero, score):
+        print(stat, ">> Nouveau record personnel ! <<")
+    else:
+        print(stat)
 
 
-if __name__ == '__main__':
-    main()
+def affiche_header(joueur):
+    """
+    Affiche les infos sur le puzzle et les records au-dessus du puzzle
+
+    :param joueur: Dictionnaire avec les infos du joueur
+    :return: Le header
+    """
+
+    pseudo = joueur["pseudo"]
+    coll = joueur["collection"]
+    numero = joueur["numero"]
+    score = joueur["score"]
+
+    record_joueur = record.meilleur_score_joueur(pseudo, coll, numero)
+    record_puzzle = record.record_jeu(coll, numero)
+    puzzle = outil.puzzle_xsb(coll, numero)
+
+    header = "{} | {} déplacements".format(puzzle, score)
+
+    if record_joueur is not None :
+        header += " | Record joueur : {}".format(record_joueur)
+    if record_puzzle is not None:
+        header += " - Record du puzzle : {} ({}) ".format(record_puzzle[1], record_puzzle[0])
+
+    print(header)
+    return header

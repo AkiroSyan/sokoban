@@ -1,0 +1,10 @@
+novoban03.xsb;10
+novoban07.xsb;10
+novoban01.xsb;8
+novoban02.xsb;14
+novoban04.xsb;11
+novoban05.xsb;7
+novoban06.xsb;17
+novoban08.xsb;34
+novoban09.xsb;24
+novoban10.xsb;10

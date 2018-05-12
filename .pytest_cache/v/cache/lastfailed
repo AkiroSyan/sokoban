@@ -1,0 +1,5 @@
+{
+  "tests/test_record.py::TestEstRecord::()::test_est_record_sur_record_inexistant": true,
+  "tests/test_record.py::TestSauvRecordJeu::()::test_sauv_record_jeu_avec_ajout": true,
+  "tests/test_record.py::TestSauvRecordJeu::()::test_sauv_record_jeu_sur_record_existant_avec_amelioration": true
+}

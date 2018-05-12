@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2018-04-08" view-index="0" gantt-divider-location="379" resource-divider-location="300" version="2.8.6" locale="en_US">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2018-05-03" view-index="0" gantt-divider-location="431" resource-divider-location="300" version="2.8.6" locale="en_US">
     <description/>
-    <view zooming-state="default:4" id="gantt-chart">
-        <field id="tpd3" name="Name" width="237" order="0"/>
-        <field id="tpd4" name="Begin date" width="54" order="1"/>
-        <field id="tpd5" name="End date" width="67" order="2"/>
-        <option id="color.recent"><![CDATA[#00cc00 #ff6600 #cc0033 #3333ff]]></option>
+    <view zooming-state="default:0" id="gantt-chart">
+        <field id="tpd3" name="Name" width="283" order="0"/>
+        <field id="tpd4" name="Begin date" width="65" order="1"/>
+        <field id="tpd5" name="End date" width="62" order="2"/>
+        <option id="color.recent"><![CDATA[#ff6600 #00cc00 #cc0033 #3333ff]]></option>
     </view>
     <view id="resource-table">
-        <field id="0" name="Name" width="209" order="0"/>
-        <field id="1" name="Default role" width="85" order="1"/>
+        <field id="0" name="Name" width="205" order="0"/>
+        <field id="1" name="Default role" width="89" order="1"/>
     </view>
     <!-- -->
     <calendars>
@@ -34,8 +34,8 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="19" name="Module puzzle" meeting="false" start="2018-03-12" duration="29" complete="96" expand="true">
-            <task id="0" name="puzzle.deplace (sans poussée)" color="#ff6600" meeting="false" start="2018-04-04" duration="1" complete="100" thirdDate="2018-04-04" thirdDate-constraint="0" expand="true">
+        <task id="19" name="Module puzzle" meeting="false" start="2018-03-21" duration="44" complete="100" expand="true">
+            <task id="0" name="puzzle.deplace (sans poussée)" color="#ff6600" meeting="false" start="2018-04-04" duration="3" complete="100" thirdDate="2018-04-04" thirdDate-constraint="0" expand="true">
                 <depend id="47" type="2" difference="0" hardness="Strong"/>
                 <depend id="56" type="2" difference="0" hardness="Strong"/>
                 <depend id="146" type="2" difference="0" hardness="Rubber"/>
@@ -73,17 +73,17 @@
                 <depend id="47" type="2" difference="0" hardness="Strong"/>
                 <depend id="63" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="8" name="puzzle.version_gagnante" meeting="false" start="2018-03-12" duration="1" complete="0" expand="true">
+            <task id="8" name="puzzle.version_gagnante" color="#ff6600" meeting="false" start="2018-05-03" duration="1" complete="100" expand="true">
                 <depend id="47" type="2" difference="0" hardness="Strong"/>
             </task>
             <task id="131" name="puzzle.incremente_score" color="#00cc00" meeting="false" start="2018-03-27" duration="1" complete="100" thirdDate="2018-03-12" thirdDate-constraint="0" expand="true">
                 <depend id="54" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="136" name="puzzle.sauv_historique" color="#00cc00" meeting="false" start="2018-03-28" duration="1" complete="100" thirdDate="2018-03-12" thirdDate-constraint="0" expand="true">
+            <task id="136" name="puzzle.sauv_historique" color="#00cc00" meeting="false" start="2018-03-27" duration="2" complete="100" thirdDate="2018-03-27" thirdDate-constraint="0" expand="true">
                 <depend id="56" type="2" difference="0" hardness="Strong"/>
             </task>
         </task>
-        <task id="20" name="Module terminal" meeting="false" start="2018-03-12" duration="40" complete="60" expand="true">
+        <task id="20" name="Module terminal" meeting="false" start="2018-03-12" duration="54" complete="90" expand="true">
             <task id="9" name="terminal.affiche_entrepot" color="#ff6600" meeting="false" start="2018-03-19" duration="1" complete="100" thirdDate="2018-03-19" thirdDate-constraint="0" expand="true">
                 <depend id="48" type="2" difference="0" hardness="Strong"/>
             </task>
@@ -92,17 +92,19 @@
                 <depend id="51" type="2" difference="0" hardness="Strong"/>
             </task>
             <task id="11" name="terminal.affiche_entrepot_couleur_unicode" meeting="false" start="2018-03-12" duration="1" complete="0" expand="true"/>
-            <task id="12" name="terminal.affiche_header" color="#8cb6ce" meeting="false" start="2018-04-19" duration="1" complete="0" thirdDate="2018-03-12" thirdDate-constraint="0" expand="true">
+            <task id="12" name="terminal.affiche_header" color="#00cc00" meeting="false" start="2018-05-03" duration="1" complete="100" thirdDate="2018-03-12" thirdDate-constraint="0" expand="true">
                 <depend id="47" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="13" name="terminal.affiche_stat_partie" color="#8cb6ce" meeting="false" start="2018-04-20" duration="1" complete="0" thirdDate="2018-03-22" thirdDate-constraint="0" expand="true">
+            <task id="13" name="terminal.affiche_stat_partie" color="#00cc00" meeting="false" start="2018-05-04" duration="1" complete="100" thirdDate="2018-04-30" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Fait le 3 mai mais merci les contraintes
+]]></notes>
                 <depend id="47" type="2" difference="0" hardness="Strong"/>
             </task>
             <task id="14" name="terminal.interprete_action" color="#ff6600" meeting="false" start="2018-03-24" duration="1" complete="100" thirdDate="2018-03-24" thirdDate-constraint="0" expand="true">
                 <depend id="47" type="2" difference="0" hardness="Strong"/>
                 <depend id="51" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="15" name="terminal.interprete_menu" meeting="false" start="2018-03-12" duration="1" complete="0" expand="true">
+            <task id="15" name="terminal.interprete_menu" color="#00cc00" meeting="false" start="2018-04-12" duration="1" complete="100" expand="true">
                 <depend id="46" type="2" difference="0" hardness="Strong"/>
             </task>
             <task id="16" name="terminal.saisie_action" color="#ff6600" meeting="false" start="2018-03-24" duration="1" complete="100" thirdDate="2018-03-24" thirdDate-constraint="0" expand="true">
@@ -141,7 +143,7 @@
                 <depend id="46" type="2" difference="0" hardness="Strong"/>
             </task>
             <task id="28" name="outil.puzzle_xsb" color="#00cc00" meeting="false" start="2018-03-19" duration="1" complete="100" thirdDate="2018-03-19" thirdDate-constraint="0" expand="true">
-                <depend id="12" type="2" difference="0" hardness="Strong"/>
+                <depend id="12" type="2" difference="0" hardness="Rubber"/>
                 <depend id="17" type="2" difference="0" hardness="Rubber"/>
                 <depend id="22" type="2" difference="0" hardness="Rubber"/>
                 <depend id="33" type="2" difference="0" hardness="Rubber"/>
@@ -186,46 +188,63 @@
                 <depend id="63" type="2" difference="0" hardness="Strong"/>
             </task>
         </task>
-        <task id="37" name="Module record" meeting="false" start="2018-04-10" duration="10" complete="37" expand="true">
-            <task id="38" name="record.est_meilleur_score_joueur" color="#ff6600" meeting="false" start="2018-04-19" duration="1" complete="0" thirdDate="2018-03-21" thirdDate-constraint="0" expand="true">
-                <depend id="13" type="2" difference="0" hardness="Strong"/>
+        <task id="37" name="Module record" meeting="false" start="2018-04-10" duration="24" complete="100" expand="true">
+            <task id="38" name="record.est_meilleur_score_joueur" color="#ff6600" meeting="false" start="2018-04-29" duration="1" complete="100" thirdDate="2018-04-19" thirdDate-constraint="0" expand="true">
+                <depend id="13" type="2" difference="0" hardness="Rubber"/>
                 <depend id="64" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="39" name="record.est_record_jeu" color="#00cc00" meeting="false" start="2018-04-11" duration="1" complete="100" thirdDate="2018-04-12" thirdDate-constraint="0" expand="true">
-                <depend id="13" type="2" difference="0" hardness="Strong"/>
+            <task id="39" name="record.est_record_jeu" color="#00cc00" meeting="false" start="2018-04-11" duration="19" complete="100" thirdDate="2018-04-11" thirdDate-constraint="0" expand="true">
+                <depend id="13" type="2" difference="0" hardness="Rubber"/>
                 <depend id="64" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="40" name="record.get_stat_partie" color="#8cb6ce" meeting="false" start="2018-04-12" duration="1" complete="0" thirdDate="2018-04-08" thirdDate-constraint="0" expand="true">
-                <depend id="13" type="2" difference="0" hardness="Strong"/>
+            <task id="40" name="record.get_stat_partie" color="#00cc00" meeting="false" start="2018-05-03" duration="1" complete="100" thirdDate="2018-04-08" thirdDate-constraint="0" expand="true">
+                <depend id="13" type="2" difference="0" hardness="Rubber"/>
             </task>
-            <task id="41" name="record.meilleur_score_joueur" color="#ff6600" meeting="false" start="2018-04-18" duration="1" complete="0" thirdDate="2018-03-20" thirdDate-constraint="0" expand="true">
-                <depend id="12" type="2" difference="0" hardness="Strong"/>
+            <task id="41" name="record.meilleur_score_joueur" color="#ff6600" meeting="false" start="2018-04-28" duration="1" complete="100" thirdDate="2018-04-18" thirdDate-constraint="0" expand="true">
+                <depend id="12" type="2" difference="0" hardness="Rubber"/>
                 <depend id="38" type="2" difference="0" hardness="Rubber"/>
                 <depend id="64" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="42" name="record.record_jeu" color="#00cc00" meeting="false" start="2018-04-10" duration="1" complete="100" thirdDate="2018-04-11" thirdDate-constraint="0" expand="true">
-                <depend id="12" type="2" difference="0" hardness="Strong"/>
+            <task id="42" name="record.record_jeu" color="#00cc00" meeting="false" start="2018-04-10" duration="1" complete="100" thirdDate="2018-04-10" thirdDate-constraint="0" expand="true">
+                <depend id="12" type="2" difference="0" hardness="Rubber"/>
                 <depend id="39" type="2" difference="0" hardness="Rubber"/>
-                <depend id="40" type="2" difference="0" hardness="Rubber"/>
                 <depend id="64" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="43" name="record.sauv_meilleur_score_joueur" color="#ff6600" meeting="false" start="2018-04-19" duration="1" complete="0" thirdDate="2018-03-20" thirdDate-constraint="0" expand="true">
+            <task id="43" name="record.sauv_meilleur_score_joueur" color="#ff6600" meeting="false" start="2018-04-25" duration="4" complete="100" thirdDate="2018-04-19" thirdDate-constraint="0" expand="true">
                 <depend id="47" type="2" difference="0" hardness="Strong"/>
                 <depend id="64" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="44" name="record.sauv_record_jeu" color="#00cc00" meeting="false" start="2018-04-12" duration="2" complete="50" thirdDate="2018-04-12" thirdDate-constraint="0" expand="true">
+            <task id="44" name="record.sauv_record_jeu" color="#00cc00" meeting="false" start="2018-04-12" duration="18" complete="100" thirdDate="2018-04-12" thirdDate-constraint="0" expand="true">
                 <depend id="47" type="2" difference="0" hardness="Strong"/>
                 <depend id="64" type="2" difference="0" hardness="Strong"/>
             </task>
         </task>
-        <task id="45" name="Module sokoconsole" meeting="false" start="2018-04-21" duration="2" complete="10" expand="true">
+        <task id="45" name="Module sokoconsole" color="#000000" meeting="false" start="2018-05-05" duration="2" complete="75" thirdDate="2018-05-05" thirdDate-constraint="0" expand="true">
             <depend id="65" type="2" difference="0" hardness="Strong"/>
-            <task id="46" name="sokoconsole.main" color="#cc0033" meeting="false" start="2018-04-22" duration="1" complete="10" thirdDate="2018-04-22" thirdDate-constraint="0" expand="true"/>
-            <task id="47" name="sokoconsole.partie" color="#cc0033" meeting="false" start="2018-04-21" duration="1" complete="10" thirdDate="2018-04-21" thirdDate-constraint="0" expand="true">
+            <task id="46" name="sokoconsole.main" color="#cc0033" meeting="false" start="2018-05-06" duration="1" complete="75" thirdDate="2018-04-22" thirdDate-constraint="0" expand="true"/>
+            <task id="47" name="sokoconsole.partie" color="#cc0033" meeting="false" start="2018-05-05" duration="1" complete="75" thirdDate="2018-04-21" thirdDate-constraint="0" expand="true">
                 <depend id="46" type="2" difference="0" hardness="Strong"/>
             </task>
         </task>
         <task id="48" name="échéance 1" color="#8cb6ce" meeting="true" start="2018-03-20" duration="0" complete="0" thirdDate="2018-03-19" thirdDate-constraint="1" expand="true"/>
+        <task id="153" name="Jeu graphique" color="#000000" meeting="false" start="2018-05-04" duration="13" complete="93" thirdDate="2018-05-02" thirdDate-constraint="0" expand="true">
+            <task id="154" name="prise en main de pygame" color="#ff6600" meeting="false" start="2018-05-04" duration="2" complete="100" thirdDate="2018-05-04" thirdDate-constraint="0" expand="true">
+                <depend id="157" type="2" difference="0" hardness="Rubber"/>
+                <depend id="166" type="2" difference="0" hardness="Rubber"/>
+                <depend id="167" type="2" difference="0" hardness="Rubber"/>
+            </task>
+            <task id="157" name="affichage entrepôt" color="#ff6600" meeting="false" start="2018-05-06" duration="1" complete="100" thirdDate="2018-05-07" thirdDate-constraint="0" expand="true">
+                <depend id="163" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="163" name="gestion des déplacements" color="#ff6600" meeting="false" start="2018-05-07" duration="1" complete="100" thirdDate="2018-05-07" thirdDate-constraint="0" expand="true"/>
+            <task id="166" name="gestion des puzzles" color="#ff6600" meeting="false" start="2018-05-08" duration="3" complete="100" thirdDate="2018-05-08" thirdDate-constraint="0" expand="true">
+                <depend id="168" type="2" difference="0" hardness="Rubber"/>
+            </task>
+            <task id="167" name="gestion des skins" color="#ff6600" meeting="false" start="2018-05-12" duration="1" complete="100" thirdDate="2018-05-12" thirdDate-constraint="0" priority="0" expand="true">
+                <depend id="168" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="168" name="menu finalisé" color="#ff6600" meeting="false" start="2018-05-13" duration="4" complete="80" thirdDate="2018-05-13" thirdDate-constraint="0" expand="true"/>
+        </task>
         <task id="51" name="échéance 2" color="#8cb6ce" meeting="true" start="2018-03-26" duration="0" complete="0" thirdDate="2018-03-26" thirdDate-constraint="1" expand="true"/>
         <task id="54" name="échéance 3" color="#8cb6ce" meeting="true" start="2018-04-02" duration="0" complete="0" thirdDate="2018-04-02" thirdDate-constraint="1" expand="true"/>
         <task id="56" name="échéance 4" color="#8cb6ce" meeting="true" start="2018-04-09" duration="0" complete="0" thirdDate="2018-04-09" thirdDate-constraint="1" expand="true"/>
@@ -242,6 +261,7 @@
             <task id="104" name="TD 1" color="#8cb6ce" meeting="true" start="2018-03-19" duration="0" complete="0" thirdDate="2018-03-19" thirdDate-constraint="1" expand="true"/>
             <task id="106" name="TD 2" color="#8cb6ce" meeting="true" start="2018-03-27" duration="0" complete="0" thirdDate="2018-03-27" thirdDate-constraint="1" expand="true"/>
             <task id="108" name="TD 3" color="#8cb6ce" meeting="true" start="2018-05-03" duration="0" complete="0" thirdDate="2018-05-03" thirdDate-constraint="1" expand="true"/>
+            <task id="151" name="TD 4" color="#8cb6ce" meeting="true" start="2018-05-18" duration="0" complete="0" thirdDate="2018-05-18" thirdDate-constraint="0" expand="true"/>
             <task id="112" name="TD 5 : évaluation finale" color="#8cb6ce" meeting="true" start="2018-06-13" duration="0" complete="0" thirdDate="2018-06-13" thirdDate-constraint="1" expand="true"/>
         </task>
     </tasks>
@@ -269,6 +289,13 @@
         <allocation task-id="38" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="10.0"/>
         <allocation task-id="41" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="10.0"/>
         <allocation task-id="43" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="10.0"/>
+        <allocation task-id="8" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="10.0"/>
+        <allocation task-id="154" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="40.0"/>
+        <allocation task-id="157" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="20.0"/>
+        <allocation task-id="163" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="20.0"/>
+        <allocation task-id="166" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="60.0"/>
+        <allocation task-id="167" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="30.0"/>
+        <allocation task-id="168" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="26" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
         <allocation task-id="18" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
         <allocation task-id="1" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
@@ -292,6 +319,10 @@
         <allocation task-id="34" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="5.0"/>
         <allocation task-id="27" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="10.0"/>
         <allocation task-id="17" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="30.0"/>
+        <allocation task-id="13" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="50.0"/>
+        <allocation task-id="40" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="50.0"/>
+        <allocation task-id="15" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="10.0"/>
+        <allocation task-id="12" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="10.0"/>
     </allocations>
     <vacations>
         <vacation start="2018-04-28" end="2018-05-05" resourceid="0"/>
