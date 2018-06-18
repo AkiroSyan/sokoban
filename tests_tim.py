@@ -17,9 +17,10 @@ import platform
 import pygame
 import graphics
 
+
 # Programme principal
 def main():
-    pass
+    print(record.get_stat_partie('novoban', 3, 30))
 
 if __name__ == '__main__':
     main()

@@ -11,7 +11,6 @@ import pygame
 import os
 import sys
 import copy
-import time
 
 import pygame_text_input
 
@@ -49,6 +48,7 @@ ACTIONS = {
     pygame.K_g: "gagne",
     pygame.K_r: "reset",
     pygame.K_s: "skin",
+    pygame.K_h: "aide",
 }
 
 FONT = "monospace"
@@ -76,7 +76,7 @@ def init_screen(x, y):
 
     pygame.init()
 
-    fontfile = os.path.join("assets", "OpenSans-Regular.ttf")
+    fontfile = os.path.join("assets", "DejaVuSans.ttf")
 
     if os.path.isfile(fontfile):
         FONT = fontfile
@@ -169,6 +169,7 @@ def affiche_entrepot(screen, entrepot):
     :return: None
     """
     cls(screen)
+
     global SCREEN_Y, SCREEN_X
     max_y = len(entrepot)
     max_x = 0
@@ -179,10 +180,7 @@ def affiche_entrepot(screen, entrepot):
     largeur = max_x * RES_X
     hauteur = max_y * RES_Y
 
-    if largeur != SCREEN_X or hauteur != SCREEN_Y:
-        SCREEN_X = largeur
-        SCREEN_Y = hauteur
-        screen = pygame.display.set_mode((SCREEN_X, SCREEN_Y))
+    screen = redimensionne_ecran(screen, largeur, hauteur)
 
     for y, ligne in enumerate(entrepot):
         for x, case in enumerate(ligne):
@@ -257,6 +255,17 @@ def saisie_pseudo(screen):
     return pseudo
 
 
+def redimensionne_ecran(screen, x, y):
+    global SCREEN_X, SCREEN_Y
+
+    if SCREEN_X != x or SCREEN_Y != y:
+        SCREEN_X = x
+        SCREEN_Y = y
+        screen = pygame.display.set_mode((SCREEN_X, SCREEN_Y))
+
+    return screen
+
+
 def affiche_texte(texte, font_size=60, text_color=(255, 255, 255)):
     """
     Crée l'objet texte représentant le texte à afficher
@@ -279,6 +288,40 @@ def centre_x(texte, y):
     return (SCREEN_X - texte.get_width()) // 2, y
 
 
+def affiche_aide(screen):
+    screen = redimensionne_ecran(screen, 800, 600)
+
+    cls(screen)
+
+    aides = {'<flèches>': "se déplacer",
+             '<u>': "annuler l'action précédente",
+             '<r>': "réinitialiser le puzzle",
+             '<s>': "changer l'apparence du jeu (skin)",
+             '<h>': "afficher l'aide",
+             '<esc>': "retour au menu/jeu"}
+
+    texte_entete = affiche_texte("Comment jouer ?", 72)
+
+    screen.blit(texte_entete, centre_x(texte_entete, 20))
+
+    for i, key_desc in enumerate(aides.items()):
+        key, desc = key_desc
+        y = 150 + i * 60
+        screen.blit(affiche_texte(key, 30), (50, y))
+        screen.blit(affiche_texte(':    ' + desc, 30), (250, y))
+
+    pygame.display.flip()
+
+    while True:
+        CLOCK.tick(25)
+        for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit(2)
+
+                if event.type == pygame.KEYDOWN and event.key in [pygame.K_ESCAPE, pygame.K_RETURN]:
+                    return
+
+
 def affiche_menu(screen, joueur):
     """
     Affiche le menu principal et attend le choix d'un item par l'utilisateur
@@ -286,12 +329,7 @@ def affiche_menu(screen, joueur):
     :param joueur: Dictionnaire représentant le joueur
     :return: Choix effectué par le joueur
     """
-    global SCREEN_X, SCREEN_Y
-
-    if SCREEN_X != 800 or SCREEN_Y != 600:
-        SCREEN_X = 800
-        SCREEN_Y = 600
-        screen = pygame.display.set_mode((SCREEN_X, SCREEN_Y))
+    screen = redimensionne_ecran(screen, 800, 600)
 
     first_puzzle = joueur["numero"]
     # Utile pour reset l'historique si l'utilisateur joue un puzzle différent de
@@ -305,20 +343,23 @@ def affiche_menu(screen, joueur):
     text_hint = affiche_texte("<= / => pour sélectionner un autre puzzle", 20)
     text_collec = affiche_texte("Changer de collection (actuel : " + collec + ")", 30)
     text_rej = affiche_texte("Charger une partie sauvegardée", 30)
+    text_howto = affiche_texte("Comment jouer ?", 30)
     text_quit = affiche_texte("Quitter", 30)
 
     text_unsaved = affiche_texte("> pas de sauvegarde <", 20)
 
-    choix = ['start', collec, 'reload', 'exit']
+    choix = ['start', collec, 'reload', 'howto', 'exit']
     action = 'start'
 
     curseur = affiche_texte(">", 60)
     cur_val = 0
-    curseur_pos = 180
+    curseur_pos = 125
+
+    affichage_sauv = 0
 
     while True:
         cls(screen)
-        CLOCK.tick(20)
+        CLOCK.tick(25)
 
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -328,14 +369,14 @@ def affiche_menu(screen, joueur):
                     if event.key in [pygame.K_RIGHT, pygame.K_LEFT]:
                         val = 1 if event.key == pygame.K_RIGHT else -1
                         next_puzz = joueur["numero"] + val
-                        if collection.est_dans_collection(collec, next_puzz) and next_puzz < joueur["max"]:
+                        if collection.est_dans_collection(collec, next_puzz) and next_puzz <= joueur["max"]:
                             joueur["numero"] = next_puzz
                             text_jouer = affiche_texte("Jouer le puzzle N°" + str(next_puzz), 45)
 
                     if event.key in [pygame.K_UP, pygame.K_DOWN]:
                         val = 1 if event.key == pygame.K_DOWN else -1
-                        cur_val = (cur_val + val) % 4
-                        curseur_pos = (cur_val + 2) * 100 - 20
+                        cur_val = (cur_val + val) % 5
+                        curseur_pos = 125 + cur_val * 90
                         action = choix[cur_val]
 
                     if event.key == pygame.K_RETURN:
@@ -358,16 +399,22 @@ def affiche_menu(screen, joueur):
                             if len(joueur["historique"]) > 0:
                                 return action
                             else:
-                                screen.blit(text_unsaved, centre_x(text_unsaved, 440))
-                                pygame.display.flip()
-                                time.sleep(.1)
+                                affichage_sauv = 25
+                        if action == 'howto':
+                            affiche_aide(screen)
+                            cls(screen)
 
-        screen.blit(text_menu, centre_x(text_menu, 50))
-        screen.blit(text_jouer, centre_x(text_jouer, 200))
-        screen.blit(text_hint, centre_x(text_hint, 260))
-        screen.blit(text_collec, (100, 300))
-        screen.blit(text_rej, (100, 400))
-        screen.blit(text_quit, (100, 500))
+        screen.blit(text_menu, centre_x(text_menu, 20))
+        screen.blit(text_jouer, centre_x(text_jouer, 150))
+        screen.blit(text_hint, centre_x(text_hint, 210))
+        screen.blit(text_collec, (100, 240))
+        screen.blit(text_rej, (100, 330))
+        screen.blit(text_howto, (100, 420))
+        screen.blit(text_quit, (100, 510))
         screen.blit(curseur, (40, curseur_pos))
+
+        if affichage_sauv > 0:  # Timer pour laisser afficher le "pas de sauvegarde"
+            screen.blit(text_unsaved, centre_x(text_unsaved, 380))
+            affichage_sauv -= 1
 
         pygame.display.flip()

@@ -62,36 +62,36 @@ def sauv_record_jeu(pseudo, collec, numero, score):
     chemin = os.path.join("sauvegardes", "records.txt")
     if os.path.isfile(chemin):
 
-        with open(chemin, 'r', encoding='UTF-8') as fr:
-            contenu_record = fr.readlines()
-        temp = ''.join(contenu_record)
+        with open(chemin, 'r', encoding='UTF-8') as lect_fichier:
+            contenu_record = lect_fichier.readlines()
+        record = ''.join(contenu_record)
 
-        if outil.puzzle_xsb(collec, numero) not in temp:
-            temp += ligne
-            with open(chemin, 'w', encoding='UTF-8') as fwr:
-                fwr.write(temp)
+        if outil.puzzle_xsb(collec, numero) not in record:
+            record += ligne
+            with open(chemin, 'w', encoding='UTF-8') as ecriture_fichier_ajout:
+                ecriture_fichier_ajout.write(record)
             return True
 
         else:
-            temp = temp.split('\n')
-            for i in range(len(temp)):
-                if temp[i].split(';')[0] == outil.puzzle_xsb(collec, numero):
-                    a, b, c = temp[i].split(';')
-                    if int(b) < score:
+            record = record.split('\n')
+            for i in range(len(record)):
+                if record[i].split(';')[0] == outil.puzzle_xsb(collec, numero):
+                    puzzle, val_record, nom_joueur = record[i].split(';')
+                    if int(val_record) < score:
                         return False
                     else:
-                        b = ';' + str(score) + ';'
-                        c = pseudo
-                    tup = (a, b, c)
-                    temp[i] = ''.join(tup)
-            temp = '\n'.join(temp)
-            with open(chemin, 'w', encoding='UTF-8') as fwmr:
-                fwmr.write(temp)
+                        val_record = ';' + str(score) + ';'
+                        nom_joueur = pseudo
+                    tup = (puzzle, val_record, nom_joueur)
+                    record[i] = ''.join(tup)
+            record = '\n'.join(record)
+            with open(chemin, 'w', encoding='UTF-8') as ecriture_fichier_modif:
+                ecriture_fichier_modif.write(record)
                 return True
 
     else:
-        with open(chemin, 'w', encoding='UTF-8') as fw:
-            fw.write(ligne)
+        with open(chemin, 'w', encoding='UTF-8') as creation_fichier:
+            creation_fichier.write(ligne)
         return True
 
 
@@ -174,27 +174,28 @@ def est_meilleur_score_joueur(pseudo, coll, numero, score):
     return True
 
 
-def get_stat_partie(pseudo, coll, numero, score):
+def get_stat_partie(coll, numero, score):
     """
     Permet d'obtenir une score sous forme de 3 étoiles pour que le joueur mesure ses performances.
 
-    :param pseudo: pseudo du joueur   -> En quoi c'est utile ? Je ne sais pas...
     :param coll: collection du puzzle
     :param numero: numero du puzzle
     :param score: score réalisé par le joueur
     :return: Un score sous forme d'etoile pleine ou non
     """
     if os.path.isfile(os.path.join("sauvegardes", "records.txt")):
+        _, record_puzzle = record_jeu(coll, numero)
         if record_jeu(coll, numero) is None:
             return "\u2605 " * 3
+        elif score < record_puzzle:
+            return "\u2605 " * 3
         else:
-            _, record_puzzle = record_jeu(coll, numero)
             ecart = abs(record_puzzle - score) / record_puzzle
-            if ecart < 0.1 or (record_puzzle - score) <= 1:
+            if ecart < 0.1 or (score - record_puzzle) <= 1:
                 return "\u2605 "*3
-            elif ecart < 0.25 or (record_puzzle - score) <= 2:
+            elif ecart < 0.25 or (score - record_puzzle) <= 2:
                 return "\u2605 " * 2 + "\u2606"
-            elif ecart < 0.50 or (record_puzzle - score) <= 4:
+            elif ecart < 0.50 or (score - record_puzzle) <= 4:
                 return "\u2605 " + "\u2606" * 2
             else:
                 return "\u2606 " * 3

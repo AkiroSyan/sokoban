@@ -49,6 +49,9 @@ def partie(joueur, entrepot, screen):
                     graphics.affiche_entrepot(screen, entrepot)
                 if intp == "exit":
                     return False
+                if intp == "aide":
+                    graphics.affiche_aide(screen)
+                    graphics.affiche_entrepot(screen, entrepot)
                 collection.sauve_contexte(joueur)
             pygame.display.set_caption(terminal.affiche_header(joueur))
 
@@ -60,6 +63,8 @@ def partie(joueur, entrepot, screen):
     nouveau_puzzle = False
 
     joueur["historique"] = list()
+    collection.sauve_contexte(joueur)
+
     if record.est_meilleur_score_joueur(pseudo, coll, numero, score):
         nouveau_puzzle = collection.debloque_niveau(joueur)
     record.sauv_meilleur_score_joueur(pseudo, coll, numero, score)
@@ -68,8 +73,12 @@ def partie(joueur, entrepot, screen):
 
     next = False
 
-    texte_victoire = graphics.affiche_texte("Puzzle complété !", font_size=45)
-    texte_debloque = graphics.affiche_texte("Nouveau puzzle débloqué", font_size=30)
+    texte_victoire = graphics.affiche_texte("Puzzle complété !", font_size=30)
+    texte_debloque = graphics.affiche_texte("Nouveau puzzle débloqué", font_size=20)
+
+    etoiles = record.get_stat_partie(coll, numero, score)
+
+    texte_score = graphics.affiche_texte(etoiles, font_size=45)
 
     while not next:
         graphics.CLOCK.tick(30)
@@ -82,6 +91,7 @@ def partie(joueur, entrepot, screen):
 
         graphics.affiche_entrepot(screen, entrepot)
         screen.blit(texte_victoire, graphics.centre_x(texte_victoire, 20))
+        screen.blit(texte_score, graphics.centre_x(texte_score, graphics.SCREEN_Y - 100))
         if nouveau_puzzle:
             screen.blit(texte_debloque, graphics.centre_x(texte_debloque, 100))
         pygame.display.flip()

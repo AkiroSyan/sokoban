@@ -169,7 +169,7 @@ def affiche_stat_partie(joueur):
     numero = joueur["numero"]
     score = joueur["score"]
 
-    stat = record.get_stat_partie(pseudo, coll, numero, score)
+    stat = record.get_stat_partie(coll, numero, score)
     if record.est_record_jeu(coll, numero, score):
         print(stat, ">> Nouveau record ! <<")
     elif record.est_meilleur_score_joueur(pseudo, coll, numero, score):

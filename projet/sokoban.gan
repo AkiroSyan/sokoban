@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2018-05-03" view-index="0" gantt-divider-location="431" resource-divider-location="300" version="2.8.6" locale="en_US">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2018-05-05" view-index="0" gantt-divider-location="431" resource-divider-location="300" version="2.8.5" locale="fr_FR">
     <description/>
-    <view zooming-state="default:0" id="gantt-chart">
-        <field id="tpd3" name="Name" width="283" order="0"/>
-        <field id="tpd4" name="Begin date" width="65" order="1"/>
-        <field id="tpd5" name="End date" width="62" order="2"/>
+    <view zooming-state="default:3" id="gantt-chart">
+        <field id="tpd3" name="Nom" width="284" order="0"/>
+        <field id="tpd4" name="Date de début" width="65" order="1"/>
+        <field id="tpd5" name="Date de fin" width="63" order="2"/>
         <option id="color.recent"><![CDATA[#ff6600 #00cc00 #cc0033 #3333ff]]></option>
     </view>
     <view id="resource-table">
-        <field id="0" name="Name" width="205" order="0"/>
-        <field id="1" name="Default role" width="89" order="1"/>
+        <field id="0" name="Nom" width="206" order="0"/>
+        <field id="1" name="Rôle par défaut" width="90" order="1"/>
     </view>
     <!-- -->
     <calendars>
@@ -219,15 +219,15 @@
                 <depend id="64" type="2" difference="0" hardness="Strong"/>
             </task>
         </task>
-        <task id="45" name="Module sokoconsole" color="#000000" meeting="false" start="2018-05-05" duration="2" complete="75" thirdDate="2018-05-05" thirdDate-constraint="0" expand="true">
+        <task id="45" name="Module sokoconsole" color="#000000" meeting="false" start="2018-05-05" duration="2" complete="100" thirdDate="2018-05-05" thirdDate-constraint="0" expand="true">
             <depend id="65" type="2" difference="0" hardness="Strong"/>
-            <task id="46" name="sokoconsole.main" color="#cc0033" meeting="false" start="2018-05-06" duration="1" complete="75" thirdDate="2018-04-22" thirdDate-constraint="0" expand="true"/>
-            <task id="47" name="sokoconsole.partie" color="#cc0033" meeting="false" start="2018-05-05" duration="1" complete="75" thirdDate="2018-04-21" thirdDate-constraint="0" expand="true">
+            <task id="46" name="sokoconsole.main" color="#cc0033" meeting="false" start="2018-05-06" duration="1" complete="100" thirdDate="2018-04-22" thirdDate-constraint="0" expand="true"/>
+            <task id="47" name="sokoconsole.partie" color="#cc0033" meeting="false" start="2018-05-05" duration="1" complete="100" thirdDate="2018-04-21" thirdDate-constraint="0" expand="true">
                 <depend id="46" type="2" difference="0" hardness="Strong"/>
             </task>
         </task>
         <task id="48" name="échéance 1" color="#8cb6ce" meeting="true" start="2018-03-20" duration="0" complete="0" thirdDate="2018-03-19" thirdDate-constraint="1" expand="true"/>
-        <task id="153" name="Jeu graphique" color="#000000" meeting="false" start="2018-05-04" duration="13" complete="93" thirdDate="2018-05-02" thirdDate-constraint="0" expand="true">
+        <task id="153" name="Jeu graphique" color="#000000" meeting="false" start="2018-05-04" duration="13" complete="100" thirdDate="2018-05-02" thirdDate-constraint="0" expand="true">
             <task id="154" name="prise en main de pygame" color="#ff6600" meeting="false" start="2018-05-04" duration="2" complete="100" thirdDate="2018-05-04" thirdDate-constraint="0" expand="true">
                 <depend id="157" type="2" difference="0" hardness="Rubber"/>
                 <depend id="166" type="2" difference="0" hardness="Rubber"/>
@@ -243,7 +243,7 @@
             <task id="167" name="gestion des skins" color="#ff6600" meeting="false" start="2018-05-12" duration="1" complete="100" thirdDate="2018-05-12" thirdDate-constraint="0" priority="0" expand="true">
                 <depend id="168" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="168" name="menu finalisé" color="#ff6600" meeting="false" start="2018-05-13" duration="4" complete="80" thirdDate="2018-05-13" thirdDate-constraint="0" expand="true"/>
+            <task id="168" name="menu finalisé" color="#ff6600" meeting="false" start="2018-05-13" duration="4" complete="100" thirdDate="2018-05-13" thirdDate-constraint="0" expand="true"/>
         </task>
         <task id="51" name="échéance 2" color="#8cb6ce" meeting="true" start="2018-03-26" duration="0" complete="0" thirdDate="2018-03-26" thirdDate-constraint="1" expand="true"/>
         <task id="54" name="échéance 3" color="#8cb6ce" meeting="true" start="2018-04-02" duration="0" complete="0" thirdDate="2018-04-02" thirdDate-constraint="1" expand="true"/>
